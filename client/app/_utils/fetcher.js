@@ -1,5 +1,5 @@
 import { toast } from 'react-toastify';
-import { API_URL } from '@config/config';
+import { API_URL } from '@config/constants';
 import { handleErrors } from '@utils/fetcherErrorsHandler';
 import { createSearchQueryString } from '@utils/queryString';
 

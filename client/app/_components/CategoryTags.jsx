@@ -1,26 +1,13 @@
-import CategoryTag from '@components/CategoryTag';
-
-const MAX_VISIBLE_CATEGORIES = 10;
+import CategoryTag from '@components/CategoryTag'
+import { getDisplayedCategories } from '@utils/utils'
+import { MAX_VISIBLE_CATEGORIES } from '@config/constants'
 
 export default function CategoryTags({
   categories,
   selectedCategory,
   isSingleQuotePage,
 }) {
-  // Ensure that selectedCategory is always visible in the list
-  // If it is beyond MAX_VISIBLE_CATEGORIES then replace last in the visible list with selectedCategory
-  let displayedCategories = categories.slice(0, MAX_VISIBLE_CATEGORIES);
-
-  if (selectedCategory && categories.includes(selectedCategory)) {
-    const selectedIndex = categories.indexOf(selectedCategory);
-
-    if (selectedIndex >= MAX_VISIBLE_CATEGORIES) {
-      displayedCategories = [
-        ...displayedCategories.slice(0, MAX_VISIBLE_CATEGORIES - 1),
-        selectedCategory,
-      ];
-    }
-  }
+  const displayedCategories = getDisplayedCategories(categories, selectedCategory)
 
   return (
     <div
@@ -40,5 +27,5 @@ export default function CategoryTags({
         <span className="text-3xl">...</span>
       )}
     </div>
-  );
+  )
 }

@@ -1,4 +1,4 @@
-import Quote from '@components/Quote';
+import Quote from '@components/Quote'
 
 export default function Quotes({ quotes, selectedCategory, searchText }) {
   return (
@@ -12,5 +12,5 @@ export default function Quotes({ quotes, selectedCategory, searchText }) {
         />
       ))}
     </div>
-  );
+  )
 }

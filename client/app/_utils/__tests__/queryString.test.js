@@ -1,4 +1,4 @@
-import { ALLOWED_SEARCH_PARAM_NAMES } from '@config/config';
+import { ALLOWED_SEARCH_PARAM_NAMES } from '@config/constants';
 import {
   createSearchQueryString,
   createSearchValuesFromQueryString,

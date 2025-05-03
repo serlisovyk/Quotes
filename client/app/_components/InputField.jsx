@@ -16,5 +16,5 @@ export default function InputField({
       />
       {showError && error && <p className="text-red-500 text-base">{error}</p>}
     </div>
-  );
+  )
 }

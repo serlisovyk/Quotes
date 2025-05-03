@@ -1,6 +1,6 @@
 import localFont from 'next/font/local';
 import { ToastContainer } from 'react-toastify';
-import Navbar from '@components/Navbar';
+import Header from '@components/Header';
 import './globals.css';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -31,7 +31,7 @@ export default function RootLayout({ children }) {
           autoClose={5000}
           hideProgressBar={false}
         />
-        <Navbar />
+        <Header />
         <main className="container mx-auto p-4">{children}</main>
       </body>
     </html>

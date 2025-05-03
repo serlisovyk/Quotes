@@ -1,5 +1,5 @@
-import QuoteFormFields from '@components/QuoteFormFields';
-import Button from '@components/Button';
+import QuoteFormFields from '@components/QuoteFormFields'
+import Button from '@components/Button'
 
 export default function QuoteForm({
   values,
@@ -22,5 +22,5 @@ export default function QuoteForm({
         <Button onClick={handleSubmit} text={buttonText} />
       </div>
     </div>
-  );
+  )
 }
