@@ -1,4 +1,5 @@
 import localFont from 'next/font/local'
+import { ThemeProvider } from 'next-themes'
 import { ToastContainer } from 'react-toastify'
 import Header from '@components/Header'
 import QueryProvider from './query-provider'
@@ -26,15 +27,17 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <ToastContainer
-          position="top-right"
-          autoClose={5000}
-          hideProgressBar={false}
-        />
-        <Header />
-        <QueryProvider>
-          <main className="container mx-auto p-4">{children}</main>
-        </QueryProvider>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+          <ToastContainer
+            position="top-right"
+            autoClose={5000}
+            hideProgressBar={false}
+          />
+          <Header />
+          <QueryProvider>
+            <main className="container mx-auto p-4">{children}</main>
+          </QueryProvider>
+        </ThemeProvider>
       </body>
     </html>
   )

@@ -6,6 +6,7 @@ import { useState } from 'react'
 import navIcon from '@public/navIcon.png'
 import BurgerButton from '@components/BurgerButton'
 import MenuItems from '@components/MenuItems'
+import ThemeToggle from '@components/ThemeToggle'
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false)
@@ -17,8 +18,12 @@ export default function Header() {
     <nav className="bg-white dark:bg-gray-800 p-4 shadow-md">
       <div className="container mx-auto flex items-center">
         <Link href="/">
-          <div className="flex items-center gap-7">
-            <Image className="ml-5 -m-2 w-16" src={navIcon} alt="Quotes App Icon" />
+          <div className="flex items-center gap-3 sm:gap-7">
+            <Image
+              className="-m-2 w-16 sm:ml-5"
+              src={navIcon}
+              alt="Quotes App Icon"
+            />
             <h1 className="text-2xl font-bold text-gray-800 dark:text-white">
               Quotes App
             </h1>
@@ -50,6 +55,8 @@ export default function Header() {
         <div className="hidden md:flex space-x-8 pl-20 text-xl">
           <MenuItems />
         </div>
+
+        <ThemeToggle />
       </div>
     </nav>
   )

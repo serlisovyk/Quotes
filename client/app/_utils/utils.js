@@ -1,3 +1,5 @@
+import { MAX_VISIBLE_CATEGORIES } from '@config/constants'
+
 export function highlightText(text, searchText) {
   if (!searchText || searchText.length < 3) return text
 
