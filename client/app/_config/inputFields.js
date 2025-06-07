@@ -24,24 +24,28 @@ export const createQuoteInputFields = ({ values, setValues, validationErrors }) 
 
 export const createSearchInputFields = ({ searchValues, validationErrors }) => [
   {
+    id: 'text',
     name: 'text',
     placeholder: 'Search by text',
     value: searchValues.text,
     error: validationErrors.text,
   },
   {
+    id: 'author',
     name: 'author',
     placeholder: 'Search by author',
     value: searchValues.author,
     error: validationErrors.author,
   },
   {
+    id: 'category',
     name: 'category',
     placeholder: 'Search by category',
     value: searchValues.category,
     error: validationErrors.category,
   },
   {
+    id: 'limit',
     name: 'limit',
     placeholder: 'Limit',
     value: searchValues.limit || '',

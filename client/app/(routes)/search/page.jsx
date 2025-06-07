@@ -99,9 +99,10 @@ export default function SearchQuotesPage() {
       <h1 className="text-3xl mb-6 text-center dark:text-white">Search Quotes</h1>
 
       <div className="text-xl grid grid-cols-1 md:grid-cols-[1fr_1fr_1fr_0.3fr] gap-4 mb-6">
-        {searchInputFields.map(({ name, placeholder, value, error }) => (
+        {searchInputFields.map(({ id, name, placeholder, value, error }) => (
           <InputField
-            key={name}
+            key={id}
+            id={id}
             placeholder={placeholder}
             value={value}
             onChange={(e) => handleInputChange(name, e.target.value)}
