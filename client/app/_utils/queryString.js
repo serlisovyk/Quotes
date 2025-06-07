@@ -1,4 +1,4 @@
-import { ALLOWED_SEARCH_PARAM_NAMES } from '@config/constants';
+import { ALLOWED_SEARCH_PARAM_NAMES } from '@config/constants'
 
 export const createSearchQueryString = (queryParams = {}) => {
   // Filter the queryParams object to only include allowed param names
@@ -11,18 +11,18 @@ export const createSearchQueryString = (queryParams = {}) => {
         value !== null &&
         value !== ''
     )
-  );
+  )
 
-  return new URLSearchParams(filteredParams).toString();
-};
+  return new URLSearchParams(filteredParams).toString()
+}
 
 export const createSearchValuesFromQueryString = (searchParams) => {
   return ALLOWED_SEARCH_PARAM_NAMES.reduce((acc, searchParamName) => {
-    const value = searchParams.get(searchParamName);
+    const value = searchParams.get(searchParamName)
     // Only include the parameter if it exists and is not empty
     if (value) {
-      acc[searchParamName] = value;
+      acc[searchParamName] = value
     }
-    return acc;
-  }, {});
-};
+    return acc
+  }, {})
+}

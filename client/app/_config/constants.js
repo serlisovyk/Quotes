@@ -20,6 +20,8 @@ export const menuItems = [
   { href: '/quotes/create', text: 'Create New' },
 ]
 
+export const CATEGORY_NAME_REGEX = /^[a-z0-9\-]+$/;
+
 export const MAX_VISIBLE_CATEGORIES = 10
 
 export const MAX_VISIBLE_TEXT_LENGTH = 200
