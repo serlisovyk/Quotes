@@ -1,20 +1,20 @@
 export const createQuoteInputFields = ({ values, setValues, validationErrors }) => [
   {
-    name: 'text',
+    id: 'text',
     placeholder: 'Quote text',
     value: values.text,
     error: validationErrors.text,
     onChange: (e) => setValues({ ...values, text: e.target.value }),
   },
   {
-    name: 'author',
+    id: 'author',
     placeholder: 'Author',
     value: values.author,
     error: validationErrors.author,
     onChange: (e) => setValues({ ...values, author: e.target.value }),
   },
   {
-    name: 'categories',
+    id: 'categories',
     placeholder: 'Categories (comma-separated)',
     value: values.categories,
     error: validationErrors.categories,

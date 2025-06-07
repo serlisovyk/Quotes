@@ -8,6 +8,12 @@ export const ALLOWED_SEARCH_PARAM_NAMES = [
   'offset',
 ]
 
+export const INITIAL_FORM_VALUES = {
+  text: '',
+  author: '',
+  categories: '',
+}
+
 export const menuItems = [
   { href: '/', text: 'Random' },
   { href: '/search', text: 'Search' },

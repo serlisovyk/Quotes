@@ -1,4 +1,5 @@
 export default function InputField({
+  id,
   placeholder,
   value,
   onChange,
@@ -7,8 +8,12 @@ export default function InputField({
 }) {
   return (
     <div className="w-full">
+      <label htmlFor={id} className="sr-only">
+        {placeholder}
+      </label>
       <input
         type="text"
+        id={id}
         placeholder={placeholder}
         value={value}
         onChange={onChange}

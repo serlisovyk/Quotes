@@ -1,3 +1,4 @@
+import { INITIAL_FORM_VALUES } from '@config/constants'
 import QuoteFormFields from '@components/QuoteFormFields'
 import Button from '@components/Button'
 
@@ -5,9 +6,15 @@ export default function QuoteForm({
   values,
   setValues,
   validationErrors,
+  setValidationErrors,
   handleSubmit,
   buttonText,
 }) {
+  const handleReset = () => {
+    setValues(INITIAL_FORM_VALUES)
+    setValidationErrors({})
+  }
+
   return (
     <div className="p-4">
       <h1 className="text-3xl mb-6 text-center dark:text-white">
@@ -18,8 +25,9 @@ export default function QuoteForm({
         setValues={setValues}
         validationErrors={validationErrors}
       />
-      <div className="flex justify-center mb-6">
+      <div className="flex justify-center gap-4 mb-6">
         <Button onClick={handleSubmit} text={buttonText} />
+        <Button onClick={handleReset} text="Reset" variant="secondary" />
       </div>
     </div>
   )

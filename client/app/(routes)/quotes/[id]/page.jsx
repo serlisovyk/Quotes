@@ -1,36 +1,36 @@
-'use client';
+'use client'
 
-import { useEffect, useState } from 'react';
-import { ClipLoader } from 'react-spinners';
-import { useRouter } from 'next/navigation';
-import Link from 'next/link';
-import Button from '@components/Button';
-import CategoryTags from '@components/CategoryTags';
-import { deleteQuoteById, findQuoteById } from '@utils/quoteApiHandlers';
+import { useEffect, useState } from 'react'
+import { ClipLoader } from 'react-spinners'
+import { useRouter } from 'next/navigation'
+import Link from 'next/link'
+import Button from '@components/Button'
+import CategoryTags from '@components/CategoryTags'
+import { deleteQuoteById, findQuoteById } from '@utils/quoteApiHandlers'
 
 export default function QuotePage(props) {
-  const { id } = props.params;
-  const [quote, setQuote] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const { id } = props.params
+  const [quote, setQuote] = useState(null)
+  const [isLoading, setIsLoading] = useState(true)
 
-  const router = useRouter();
+  const router = useRouter()
 
   useEffect(() => {
-    findQuoteById({ id, setIsLoading, setData: setQuote });
-  }, []);
+    findQuoteById({ id, setIsLoading, setData: setQuote })
+  }, [])
 
   if (isLoading) {
     return (
       <div className="flex justify-center items-center h-screen">
         <ClipLoader size={60} color="#4A90E2" />
       </div>
-    );
+    )
   }
 
   if (!quote) {
     return (
       <p className="text-center text-2xl mt-10">{`Quote with id ${id} not found.`}</p>
-    );
+    )
   }
 
   return (
@@ -60,5 +60,5 @@ export default function QuotePage(props) {
         />
       </div>
     </div>
-  );
+  )
 }

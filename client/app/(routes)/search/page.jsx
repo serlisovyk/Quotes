@@ -1,19 +1,19 @@
-'use client';
+'use client'
 
-import { useEffect, useState } from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
-import { ClipLoader } from 'react-spinners';
-import deepEqual from 'deep-equal';
-import Button from '@components/Button';
-import InputField from '@components/InputField';
-import Quotes from '@components/Quotes';
-import { createSearchInputFields } from '@config/inputFields';
-import { getSearchInputValidationMessage } from '@utils/validation';
-import { findQuotes } from '@utils/quoteApiHandlers';
+import { useEffect, useState } from 'react'
+import { useRouter, useSearchParams } from 'next/navigation'
+import { ClipLoader } from 'react-spinners'
+import deepEqual from 'deep-equal'
+import Button from '@components/Button'
+import InputField from '@components/InputField'
+import Quotes from '@components/Quotes'
+import { createSearchInputFields } from '@config/inputFields'
+import { getSearchInputValidationMessage } from '@utils/validation'
+import { findQuotes } from '@utils/quoteApiHandlers'
 import {
   createSearchQueryString,
   createSearchValuesFromQueryString,
-} from '@utils/queryString';
+} from '@utils/queryString'
 
 const INITIAL_SEARCH_VALUES = {
   text: '',
@@ -21,84 +21,82 @@ const INITIAL_SEARCH_VALUES = {
   category: '',
   limit: '',
   offset: '',
-};
+}
 
 export default function SearchQuotesPage() {
-  const [searchValues, setSearchValues] = useState(INITIAL_SEARCH_VALUES);
-  const [searchSubmitted, setSearchSubmitted] = useState(false);
-  const [searchButtonClicked, setSearchButtonClicked] = useState(false);
-  const [quotes, setQuotes] = useState([]);
-  const [validationErrors, setValidationErrors] = useState({});
-  const [isLoading, setIsLoading] = useState(false);
+  const [searchValues, setSearchValues] = useState(INITIAL_SEARCH_VALUES)
+  const [searchSubmitted, setSearchSubmitted] = useState(false)
+  const [searchButtonClicked, setSearchButtonClicked] = useState(false)
+  const [quotes, setQuotes] = useState([])
+  const [validationErrors, setValidationErrors] = useState({})
+  const [isLoading, setIsLoading] = useState(false)
 
-  const router = useRouter();
-  const searchParams = useSearchParams();
+  const router = useRouter()
+  const searchParams = useSearchParams()
 
   useEffect(() => {
     const searchValuesFromQueryString =
-      createSearchValuesFromQueryString(searchParams);
+      createSearchValuesFromQueryString(searchParams)
 
     const newSearchValues = {
       ...INITIAL_SEARCH_VALUES,
       ...searchValuesFromQueryString,
-    };
+    }
 
     if (!deepEqual(newSearchValues, searchValues)) {
-      setSearchValues(newSearchValues);
+      setSearchValues(newSearchValues)
 
       if (Object.keys(searchValuesFromQueryString).length === 0) {
-        setQuotes([]);
-      } else handleSearch(searchValuesFromQueryString);
+        setQuotes([])
+      } else handleSearch(searchValuesFromQueryString)
     }
-  }, [searchParams]); // Run on the first render and each time when searchParams changes
+  }, [searchParams]) // Run on the first render and each time when searchParams changes
 
   const handleSearch = async (inputSearchValues) => {
-    setSearchButtonClicked(true);
+    setSearchButtonClicked(true)
 
     if (Object.keys(validationErrors).length > 0) {
-      return; // Exit early if there are validation errors
+      return // Exit early if there are validation errors
     }
 
-    const queryParams = { ...inputSearchValues };
-    const query = createSearchQueryString(queryParams);
+    const queryParams = { ...inputSearchValues }
+    const query = createSearchQueryString(queryParams)
     // Update the query string in the URL
-    router.push(`?${query}`);
+    router.push(`?${query}`)
 
-    setSearchSubmitted(true);
-    findQuotes({ setQuotes, setIsLoading, queryParams });
-  };
+    setSearchSubmitted(true)
+    findQuotes({ setQuotes, setIsLoading, queryParams })
+  }
 
   const clearSearch = () => {
-    setSearchValues({ ...INITIAL_SEARCH_VALUES });
-    setSearchButtonClicked(false);
-    setSearchSubmitted(false);
-    setQuotes([]);
-    router.push(window.location.pathname);
-  };
+    setSearchValues({ ...INITIAL_SEARCH_VALUES })
+    setSearchButtonClicked(false)
+    setSearchSubmitted(false)
+    setQuotes([])
+    router.push(window.location.pathname)
+  }
 
   const handleInputChange = (name, value) => {
-    setSearchValues({ ...searchValues, [name]: value });
+    setSearchValues({ ...searchValues, [name]: value })
 
-    const errorMessage = getSearchInputValidationMessage(name, value);
-    const newValidationErrors = { ...validationErrors };
+    const errorMessage = getSearchInputValidationMessage(name, value)
+    const newValidationErrors = { ...validationErrors }
     if (errorMessage) {
-      newValidationErrors[name] = errorMessage;
+      newValidationErrors[name] = errorMessage
     } else {
-      delete newValidationErrors[name]; // Remove the error if there is none
+      delete newValidationErrors[name] // Remove the error if there is none
     }
-    setValidationErrors(newValidationErrors);
-  };
+    setValidationErrors(newValidationErrors)
+  }
 
   const searchInputFields = createSearchInputFields({
     searchValues,
     validationErrors,
-  });
+  })
 
   return (
     <div className="p-4">
-      <h1 className="text-3xl mb-6 text-center dark:text-white">
-        Search Quotes
-      </h1>
+      <h1 className="text-3xl mb-6 text-center dark:text-white">Search Quotes</h1>
 
       <div className="text-xl grid grid-cols-1 md:grid-cols-[1fr_1fr_1fr_0.3fr] gap-4 mb-6">
         {searchInputFields.map(({ name, placeholder, value, error }) => (
@@ -136,5 +134,5 @@ export default function SearchQuotesPage() {
         )
       )}
     </div>
-  );
+  )
 }
