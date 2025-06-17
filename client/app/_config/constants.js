@@ -14,6 +14,14 @@ export const INITIAL_FORM_VALUES = {
   categories: '',
 }
 
+export const INITIAL_SEARCH_VALUES = {
+  text: '',
+  author: '',
+  category: '',
+  limit: '',
+  offset: '',
+}
+
 export const menuItems = [
   { href: '/', text: 'Random' },
   { href: '/search', text: 'Search' },

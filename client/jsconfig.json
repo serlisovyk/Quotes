@@ -6,6 +6,7 @@
       "@config/*": ["./app/_config/*"],
       "@utils/*": ["./app/_utils/*"],
       "@services/*": ["./app/_services/*"],
+      "@queries/*": ["./app/_queries/*"],
       "@public/*": ["./public/*"]
     }
   }

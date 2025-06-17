@@ -1,34 +1,25 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-import { ClipLoader } from 'react-spinners'
 import Button from '@components/Button'
 import Quotes from '@components/Quotes'
-import { findRandomQuotes } from '@services/services'
+import Loader from '@components/Loader'
+import { useGetRandomQuotes } from '@queries/useGetRandomQuotes'
 
 export default function RandomQuotesPage() {
-  const [quotes, setQuotes] = useState([])
-  const [isLoading, setIsLoading] = useState(true)
+  const { quotes, isLoading, error, refetch } = useGetRandomQuotes()
 
-  useEffect(() => {
-    findRandomQuotes({ setQuotes, setIsLoading })
-  }, [])
+  if (error) {
+    return (
+      <p className="text-gray-600 text-center">Error while fetching random quotes</p>
+    )
+  }
 
   return (
     <div className="p-4">
       <h1 className="text-3xl mb-6 text-center dark:text-white">Random Quotes</h1>
-      <Button
-        onClick={() => findRandomQuotes({ setQuotes, setIsLoading })}
-        text="Get Random Quotes"
-      />
+      <Button onClick={refetch} text="Get Random Quotes" />
 
-      {isLoading ? (
-        <div className="flex mt-20 justify-center items-center">
-          <ClipLoader size={60} color="#4A90E2" />
-        </div>
-      ) : (
-        <Quotes quotes={quotes} />
-      )}
+      {isLoading ? <Loader /> : <Quotes quotes={quotes} />}
     </div>
   )
 }

@@ -4,19 +4,10 @@ import { QUOTES_API_ENDPOINT, RANDOM_QUOTES_API_ENDPOINT } from '@config/constan
 import { getSingleQuoteApiEndpoint } from '@utils/utils'
 import { isQuoteFormValid, isQuoteValidId } from '@utils/validation'
 
-export const findRandomQuotes = async ({ setQuotes, setIsLoading }) => {
-  setIsLoading(true)
-  const data = await fetcher.get(RANDOM_QUOTES_API_ENDPOINT)
-  if (data) setQuotes(data)
-  setIsLoading(false)
-}
+export const fetchRandomQuotes = () => fetcher.get(RANDOM_QUOTES_API_ENDPOINT)
 
-export const findQuotes = async ({ setQuotes, setIsLoading, queryParams = {} }) => {
-  setIsLoading(true)
-  const data = await fetcher.get(QUOTES_API_ENDPOINT, queryParams)
-  if (data) setQuotes(data)
-  setIsLoading(false)
-}
+export const fetchQuotes = (queryParams = {}) =>
+  fetcher.get(QUOTES_API_ENDPOINT, queryParams)
 
 export const findQuoteById = async ({ id, setData, setIsLoading, formatData }) => {
   if (!isQuoteValidId(id)) {
