@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation'
 import { ClipLoader } from 'react-spinners'
 import { INITIAL_FORM_VALUES } from '@config/constants'
 import QuoteForm from '@components/QuoteForm'
-import { editQuote, findQuoteById } from '@utils/quoteApiHandlers'
+import { editQuote, findQuoteById } from '@services/services'
 
 export default function EditQuotePage({ params }) {
   const { id } = params

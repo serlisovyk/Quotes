@@ -9,7 +9,7 @@ import InputField from '@components/InputField'
 import Quotes from '@components/Quotes'
 import { createSearchInputFields } from '@config/inputFields'
 import { getSearchInputValidationMessage } from '@utils/validation'
-import { findQuotes } from '@utils/quoteApiHandlers'
+import { findQuotes } from '@services/services'
 import {
   createSearchQueryString,
   createSearchValuesFromQueryString,

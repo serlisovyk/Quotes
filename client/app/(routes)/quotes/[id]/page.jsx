@@ -6,14 +6,13 @@ import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import Button from '@components/Button'
 import CategoryTags from '@components/CategoryTags'
-import { deleteQuoteById, findQuoteById } from '@utils/quoteApiHandlers'
+import { deleteQuoteById, findQuoteById } from '@services/services'
 
-export default function QuotePage(props) {
-  const { id } = props.params
+export default function QuotePage({ params: { id } }) {
+  const router = useRouter()
+
   const [quote, setQuote] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
-
-  const router = useRouter()
 
   useEffect(() => {
     findQuoteById({ id, setIsLoading, setData: setQuote })

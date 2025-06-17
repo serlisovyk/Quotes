@@ -5,6 +5,7 @@
       "@components/*": ["./app/_components/*"],
       "@config/*": ["./app/_config/*"],
       "@utils/*": ["./app/_utils/*"],
+      "@services/*": ["./app/_services/*"],
       "@public/*": ["./public/*"]
     }
   }

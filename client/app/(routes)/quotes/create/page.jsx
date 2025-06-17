@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { INITIAL_FORM_VALUES } from '@config/constants'
 import QuoteForm from '@components/QuoteForm'
-import { createQuote } from '@utils/quoteApiHandlers'
+import { createQuote } from '@services/services'
 
 export default function CreateQuotePage() {
   const [formValues, setFormValues] = useState(INITIAL_FORM_VALUES)

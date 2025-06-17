@@ -1,7 +1,7 @@
 'use client'
 
-import { useTheme } from 'next-themes'
 import Image from 'next/image'
+import { useTheme } from 'next-themes'
 import { useEffect, useState } from 'react'
 import moon from '@public/moon.svg'
 import sun from '@public/sun.svg'

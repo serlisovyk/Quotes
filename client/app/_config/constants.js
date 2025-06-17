@@ -20,7 +20,11 @@ export const menuItems = [
   { href: '/quotes/create', text: 'Create New' },
 ]
 
-export const CATEGORY_NAME_REGEX = /^[a-z0-9\-]+$/;
+export const CATEGORY_NAME_REGEX = /^[a-z0-9\-]+$/
+
+export const QUOTES_API_ENDPOINT = 'quotes'
+
+export const RANDOM_QUOTES_API_ENDPOINT = 'quotes/random'
 
 export const MAX_VISIBLE_CATEGORIES = 10
 

@@ -1,6 +1,6 @@
 import { toast } from 'react-toastify'
 
-export const handleErrors = async (response) => {
+export async function handleErrors(response) {
   if (!response.ok) {
     let errorMessage = 'Some error occurred'
     let inputValidationErrors

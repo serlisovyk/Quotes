@@ -1,16 +1,8 @@
 import { toast } from 'react-toastify'
-import fetcher from '@utils/fetcher'
-import { isQuoteFormValid } from '@utils/validation'
-
-const QUOTES_API_ENDPOINT = 'quotes'
-const RANDOM_QUOTES_API_ENDPOINT = 'quotes/random'
-
-const getSingleQuoteApiEndpoint = (id) => `${QUOTES_API_ENDPOINT}/${id}`
-
-const isQuoteValidId = (id) => {
-  const parsedId = parseInt(id, 10)
-  return Number.isInteger(parsedId) && parsedId > 0 && parsedId < 2147483647
-}
+import fetcher from 'app/_services/fetcher'
+import { QUOTES_API_ENDPOINT, RANDOM_QUOTES_API_ENDPOINT } from '@config/constants'
+import { getSingleQuoteApiEndpoint } from '@utils/utils'
+import { isQuoteFormValid, isQuoteValidId } from '@utils/validation'
 
 export const findRandomQuotes = async ({ setQuotes, setIsLoading }) => {
   setIsLoading(true)

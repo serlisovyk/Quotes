@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import { ClipLoader } from 'react-spinners'
 import Button from '@components/Button'
 import Quotes from '@components/Quotes'
-import { findRandomQuotes } from '@utils/quoteApiHandlers'
+import { findRandomQuotes } from '@services/services'
 
 export default function RandomQuotesPage() {
   const [quotes, setQuotes] = useState([])

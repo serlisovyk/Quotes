@@ -1,17 +1,17 @@
 import { CATEGORY_NAME_REGEX } from '@config/constants'
 
-export const isQuoteFormValid = ({ values, setValidationErrors }) => {
+export function isQuoteFormValid({ values, setValidationErrors }) {
   const errors = {}
   const { text, author, categories } = values
 
-  // Validate quote text
-  if (text.length < 10) errors.text = 'Text must be at least 10 characters long.'
+  if (text.length < 10) {
+    errors.text = 'Text must be at least 10 characters long.'
+  }
 
-  // Validate quote author
-  if (author.length < 2 || author.length > 255)
+  if (author.length < 2 || author.length > 255) {
     errors.author = 'Author must be between 2 and 255 characters long.'
+  }
 
-  // Validate quote categories (split by comma and trim whitespace)
   if (!categories.trim()) {
     errors.categories = 'There must be at least one category.'
   } else {
@@ -32,10 +32,7 @@ export const isQuoteFormValid = ({ values, setValidationErrors }) => {
   return Object.keys(errors).length === 0
 }
 
-// We decided not to validate 'limit' values even though there is server-side validation
-// limit must be in the range [1...50]
-// This is done to be able to see Toast notification when server returns validation error
-export const getSearchInputValidationMessage = (name, value) => {
+export function getSearchInputValidationMessage(name, value) {
   if (name === 'text' && value && value.length < 3) {
     return 'Text must be at least 3 characters long.'
   }
@@ -45,4 +42,9 @@ export const getSearchInputValidationMessage = (name, value) => {
   if (name === 'category' && value && !CATEGORY_NAME_REGEX.test(value)) {
     return 'Category can only contain lowercase letters, numbers, and dashes.'
   }
+}
+
+export function isQuoteValidId(id) {
+  const parsedId = parseInt(id, 10)
+  return Number.isInteger(parsedId) && parsedId > 0 && parsedId < 2147483647
 }

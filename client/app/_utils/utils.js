@@ -1,4 +1,6 @@
-import { MAX_VISIBLE_CATEGORIES } from '@config/constants'
+import { MAX_VISIBLE_CATEGORIES, QUOTES_API_ENDPOINT } from '@config/constants'
+
+export const getSingleQuoteApiEndpoint = (id) => `${QUOTES_API_ENDPOINT}/${id}`
 
 export function highlightText(text, searchText) {
   if (!searchText || searchText.length < 3) return text
