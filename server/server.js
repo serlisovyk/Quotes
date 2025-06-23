@@ -1,17 +1,15 @@
-const app = require('./src/app');
-const { APP_PORT } = require('./src/config/config');
-const dbInit = require('./src/config/dbInit');
+import app from './src/app.js'
+import dbInit from './src/config/dbInit.js'
+import { APP_PORT } from './src/config/config.js'
 
 const startServer = async () => {
   try {
-    await dbInit();
-    app.listen(APP_PORT, () => {
-      console.log(`Server is running on port ${APP_PORT}`);
-    });
+    await dbInit()
+    app.listen(APP_PORT, () => console.log(`Server is running on port ${APP_PORT}`))
   } catch (error) {
-    console.error('Unable to sync database:', error);
-    process.exit(1);
+    console.error('Unable to sync database:', error)
+    process.exit(1)
   }
-};
+}
 
-startServer();
+startServer()

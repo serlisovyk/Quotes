@@ -1,17 +1,17 @@
-const express = require('express');
-const app = express();
-const jsonMiddleware = require('./middlewares/jsonMiddleware');
-const corsMiddleware = require('./middlewares/corsMiddleware');
-const quotesRouter = require('./routes/quotesRouter');
-const categoriesRouter = require('./routes/categoriesRouter');
-const errorMiddleware = require('./middlewares/errorMiddleware');
+import express from 'express'
+import cors from 'cors'
+import quotesRouter from './routes/quotesRouter.js'
+import categoriesRouter from './routes/categoriesRouter.js'
+import errorMiddleware from './middlewares/errorMiddleware.js'
 
-app.use(corsMiddleware);
-app.use(jsonMiddleware);
+const app = express()
 
-app.use('/quotes', quotesRouter);
-app.use('/categories', categoriesRouter);
+app.use(cors())
+app.use(express.json())
 
-app.use(errorMiddleware);
+app.use('/quotes', quotesRouter)
+app.use('/categories', categoriesRouter)
 
-module.exports = app;
+app.use(errorMiddleware)
+
+export default app

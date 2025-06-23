@@ -1,7 +1,7 @@
-const { query, param, body } = require('express-validator');
-const { CATEGORY_NAME_REGEX } = require('./categoryValidators');
+import { query, param, body } from 'express-validator'
+import { CATEGORY_NAME_REGEX } from '../constants/constants.js'
 
-const getQuotesValidators = [
+export const getQuotesValidators = [
   query('limit')
     .optional()
     .trim()
@@ -21,9 +21,9 @@ const getQuotesValidators = [
             'Category can only contain lowercase letters, numbers and dashes'
           )
     ),
-];
+]
 
-const postQuoteValidators = [
+export const postQuoteValidators = [
   body('text')
     .trim()
     .isString()
@@ -43,22 +43,22 @@ const postQuoteValidators = [
     .withMessage(
       'Each category must contain only lowercase letters, numbers and dashes'
     ),
-];
+]
 
-const getRandomQuotesValidators = [
+export const getRandomQuotesValidators = [
   query('limit').optional().trim().isInt({ min: 1, max: 20 }),
-];
+]
 
 const quoteIdParamValidator = param('id')
   .trim()
   .isInt({ min: 1, max: 2147483647 })
-  .withMessage('Quote ID must be integer in the range from 1 to 2147483647');
+  .withMessage('Quote ID must be integer in the range from 1 to 2147483647')
 
-const getSingleQuoteValidators = [quoteIdParamValidator];
+export const getSingleQuoteValidators = [quoteIdParamValidator]
 
-const deleteSingleQuoteValidators = [quoteIdParamValidator];
+export const deleteSingleQuoteValidators = [quoteIdParamValidator]
 
-const patchSingleQuoteValidators = [
+export const patchSingleQuoteValidators = [
   quoteIdParamValidator,
   body('text')
     .optional()
@@ -80,13 +80,4 @@ const patchSingleQuoteValidators = [
     .withMessage(
       'Each category must contain only lowercase letters, numbers, and dashes'
     ),
-];
-
-module.exports = {
-  getQuotesValidators,
-  getRandomQuotesValidators,
-  getSingleQuoteValidators,
-  deleteSingleQuoteValidators,
-  postQuoteValidators,
-  patchSingleQuoteValidators,
-};
+]

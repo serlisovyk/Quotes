@@ -1,26 +1,25 @@
-const express = require('express');
-const router = express.Router();
-const categoriesController = require('../controllers/categoriesController');
-const validationErrorHandler = require('../middlewares/validationErrorHandler');
-const {
+import { Router } from 'express'
+import * as categoriesController from '../controllers/categoriesController.js'
+import validationErrorHandler from '../middlewares/validationErrorHandler.js'
+import {
   getCategoriesValidators,
   getSingleCategoryValidators,
-} = require('../middlewares/categoryValidators');
+} from '../middlewares/categoryValidators.js'
 
-// Route to get multiple categories
+const router = Router()
+
 router.get(
   '/',
   getCategoriesValidators,
   validationErrorHandler,
   categoriesController.getCategories
-);
+)
 
-// Route to get a specific category by ID
 router.get(
   '/:id',
   getSingleCategoryValidators,
   validationErrorHandler,
   categoriesController.getCategoryById
-);
+)
 
-module.exports = router;
+export default router

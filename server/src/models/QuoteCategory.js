@@ -1,4 +1,4 @@
-const sequelize = require('../config/db');
+import sequelize from '../config/db.js'
 
 const QuoteCategory = sequelize.define(
   'QuoteCategory',
@@ -12,6 +12,6 @@ const QuoteCategory = sequelize.define(
       { name: 'QuoteCategories_QuoteId', fields: ['QuoteId'] },
     ],
   }
-);
+)
 
-module.exports = QuoteCategory;
+export default QuoteCategory

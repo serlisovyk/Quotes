@@ -1,16 +1,12 @@
-# General information
-
-In order to populate Database you have two options:
+# In order to populate Database you have two options:
 
 - (Better) Import all DB data from the dump file `db-without-rare-categories.sql.gz` directly to the database without importQuotes.js script
 - Import data from the `quotes.csv` file and then remove rare categories (see detailed steps below)
 
 ## OPTION 1 - Load data from the dump file
 
-## Run docker containers for the PostgreSQL and Adminer
-
-1. Change directory to the `server` folder
-1. Run DB containers using `docker compose up -d`
+1. `cd server`
+1. `docker compose up -d`
 
 ## Connect to adminer and load data
 
@@ -26,10 +22,8 @@ In order to populate Database you have two options:
 
 ## OPTION 2 - Import quotes data from the CSV (Takes more time!)
 
-## Run docker containers for the PostgreSQL and Adminer
-
-1. Change directory to the `server` folder
-1. Run DB containers using `docker compose up -d`
+1. `cd server`
+1. `docker compose up -d`
 
 ## Import quotes from the CSV
 

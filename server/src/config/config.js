@@ -1,20 +1,15 @@
-require('dotenv').config();
+import 'dotenv-flow/config'
 
-module.exports = {
-  // Application
-  APP_PORT: process.env.APP_PORT || 3000,
+export const APP_PORT = process.env.APP_PORT
 
-  // Initial data import to the database
-  CSV_IMPORT_BATCH_SIZE: process.env.CSV_IMPORT_BATCH_SIZE || 2000,
-  CSV_IMPORT_BATCH_TIMEOUT: process.env.CSV_IMPORT_BATCH_TIMEOUT || 30000,
+export const CSV_IMPORT_BATCH_SIZE = process.env.CSV_IMPORT_BATCH_SIZE
+export const CSV_IMPORT_BATCH_TIMEOUT = process.env.CSV_IMPORT_BATCH_TIMEOUT
 
-  // Database
-  DB: {
-    NAME: process.env.DB_NAME || 'db',
-    USER: process.env.DB_USER || 'admin',
-    PASSWORD: process.env.DB_PASSWORD || 'admin_password',
-    HOST: process.env.DB_HOST || 'localhost',
-    PORT: process.env.DB_PORT || 5432,
-    DIALECT: process.env.DB_DIALECT || 'postgres',
-  },
-};
+export const DB = {
+  NAME: process.env.DB_NAME,
+  USER: process.env.DB_USER,
+  PASSWORD: process.env.DB_PASSWORD,
+  HOST: process.env.DB_HOST,
+  PORT: process.env.DB_PORT,
+  DIALECT: process.env.DB_DIALECT,
+}
