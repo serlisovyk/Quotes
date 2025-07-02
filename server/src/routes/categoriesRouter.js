@@ -1,23 +1,20 @@
 import { Router } from 'express'
 import * as CategoriesController from '../controllers/categoriesController.js'
+import * as CategoriesValidator from '../validators/categoryValidators.js'
 import validationErrorHandler from '../middlewares/validationErrorHandler.js'
-import {
-  getCategoriesValidators,
-  getSingleCategoryValidators,
-} from '../middlewares/categoryValidators.js'
 
 const router = Router()
 
 router.get(
   '/',
-  getCategoriesValidators,
+  CategoriesValidator.getCategoriesValidators,
   validationErrorHandler,
   CategoriesController.getCategories
 )
 
 router.get(
   '/:id',
-  getSingleCategoryValidators,
+  CategoriesValidator.getSingleCategoryValidators,
   validationErrorHandler,
   CategoriesController.getCategoryById
 )
