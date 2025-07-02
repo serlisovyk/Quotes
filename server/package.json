@@ -15,6 +15,7 @@
     "dotenv-flow": "^4.1.0",
     "express": "^4.19.2",
     "express-validator": "^7.0.1",
+    "pg": "^8.16.3",
     "sequelize": "^6.37.3"
   },
   "devDependencies": {

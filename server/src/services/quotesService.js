@@ -38,6 +38,7 @@ export const findQuotes = async ({ limit, offset, author, text, category }) => {
       include: includeCategoryConfig,
       where: { id: quotesIds },
     })
+
     return quotesByIds
   }
 }

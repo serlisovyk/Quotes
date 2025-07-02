@@ -8,25 +8,9 @@ import {
   CSV_IMPORT_BATCH_SIZE,
   CSV_IMPORT_BATCH_TIMEOUT,
 } from '../../config/config.js'
+import { validateAndSplitCategories, pauseStream } from '../../utils/utils.js'
 
 const CSV_FILENAME = path.resolve(__dirname, '../data/quotes.csv')
-
-function validateAndSplitCategories(categoriesStr) {
-  const categories = categoriesStr.split(', ')
-  // if any category contains space or has upper case letter it is considered invalid and we don't process such row
-  return categories.some(
-    (category) => category.includes(' ') || /[A-Z]/.test(category)
-  )
-    ? []
-    : categories
-}
-
-function pauseStream(stream, time) {
-  stream.pause()
-  setTimeout(() => {
-    stream.resume()
-  }, time)
-}
 
 async function importQuotes() {
   try {
