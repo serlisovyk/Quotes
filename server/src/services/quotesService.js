@@ -27,12 +27,11 @@ export const findQuotes = async ({ limit, offset, author, text, category }) => {
     where: whereClause,
   })
 
-  // TODO: Try to find the way to filter by category name and find
-  // names of all categories for the quote in one DB request
   if (!category) {
     return quotes
   } else {
     const quotesIds = quotes.map((quote) => quote.id)
+
     const quotesByIds = await Quote.findAll({
       attributes,
       order: [['id', 'ASC']],
@@ -52,10 +51,7 @@ export const findRandomQuotes = async (limit) =>
   })
 
 export const findSingleQuote = async (id) =>
-  await Quote.findByPk(id, {
-    attributes,
-    include: includeCategoryConfig,
-  })
+  await Quote.findByPk(id, { attributes, include: includeCategoryConfig })
 
 export const deleteSingleQuote = async (id) => {
   const count = await Quote.destroy({ where: { id } })
@@ -65,6 +61,7 @@ export const deleteSingleQuote = async (id) => {
 export const createQuote = async ({ text, author, categories }) => {
   const createdQuoteId = await sequelize.transaction(async (t) => {
     const quote = await Quote.create({ text, author }, { transaction: t })
+
     const categoryInstances = await findOrCreateCategories(categories, t)
     await quote.setCategories(categoryInstances, { transaction: t })
 
@@ -78,9 +75,7 @@ export const modifySingleQuote = async (id, { text, author, categories }) => {
   const modifiedQuoteId = await sequelize.transaction(async (t) => {
     const quote = await Quote.findByPk(id, { transaction: t })
 
-    if (!quote) {
-      return null
-    }
+    if (!quote) return null
 
     if (text) quote.text = text
     if (author) quote.author = author

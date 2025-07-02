@@ -1,4 +1,3 @@
-// Remove from the DB all categories which appear in one or two quotes
 import { QueryTypes } from 'sequelize'
 import sequelize from '../../config/db.js'
 import Category from '../../models/Category.js'
@@ -17,15 +16,9 @@ async function removeRareCategories() {
       pluck: 'CategoryId',
     })
 
-    // Get the IDs of rare categories
     const rareCategoryIds = rareCategories.map((category) => category.CategoryId)
 
-    // Remove rare categories by ids
-    await Category.destroy({
-      where: {
-        id: rareCategoryIds,
-      },
-    })
+    await Category.destroy({ where: { id: rareCategoryIds } })
 
     // STEP 2. Remove quotes without categories which are left after removal of the rare categories
     // Find quotes without categories
@@ -43,13 +36,10 @@ async function removeRareCategories() {
     )
 
     // remove quotes without categories
-    await Quote.destroy({
-      where: {
-        id: quotesWithoutCategoriesIds,
-      },
-    })
+    await Quote.destroy({ where: { id: quotesWithoutCategoriesIds } })
 
     console.log('Rare categories removed successfully.')
+    console.log('Quotes without categories removed successfully.')
   } catch (error) {
     console.error('Error removing rare categories:', error)
   }

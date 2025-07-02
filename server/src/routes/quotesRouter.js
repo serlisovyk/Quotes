@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import * as quotesController from '../controllers/quotesController.js'
+import * as QuotesController from '../controllers/quotesController.js'
 import validationErrorHandler from '../middlewares/validationErrorHandler.js'
 import {
   getQuotesValidators,
@@ -16,42 +16,42 @@ router.get(
   '/',
   getQuotesValidators,
   validationErrorHandler,
-  quotesController.getQuotes
-)
-
-router.post(
-  '/',
-  postQuoteValidators,
-  validationErrorHandler,
-  quotesController.postQuote
-)
-
-router.get(
-  '/random',
-  getRandomQuotesValidators,
-  validationErrorHandler,
-  quotesController.getRandomQuotes
+  QuotesController.getQuotes
 )
 
 router.get(
   '/:id',
   getSingleQuoteValidators,
   validationErrorHandler,
-  quotesController.getQuoteById
+  QuotesController.getQuoteById
 )
 
-router.delete(
-  '/:id',
-  deleteSingleQuoteValidators,
+router.get(
+  '/random',
+  getRandomQuotesValidators,
   validationErrorHandler,
-  quotesController.deleteQuoteById
+  QuotesController.getRandomQuotes
+)
+
+router.post(
+  '/',
+  postQuoteValidators,
+  validationErrorHandler,
+  QuotesController.postQuote
 )
 
 router.patch(
   '/:id',
   patchSingleQuoteValidators,
   validationErrorHandler,
-  quotesController.patchQuoteById
+  QuotesController.patchQuoteById
+)
+
+router.delete(
+  '/:id',
+  deleteSingleQuoteValidators,
+  validationErrorHandler,
+  QuotesController.deleteQuoteById
 )
 
 export default router

@@ -13,10 +13,9 @@ export const findCategories = async ({ limit, offset, name }) => {
     order: [['id', 'ASC']],
     where: whereClause,
   })
+
   return categories
 }
 
 export const findSingleCategory = async (id) =>
-  await Category.findByPk(id, {
-    attributes,
-  })
+  await Category.findByPk(id, { attributes })

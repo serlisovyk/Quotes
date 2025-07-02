@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import * as categoriesController from '../controllers/categoriesController.js'
+import * as CategoriesController from '../controllers/categoriesController.js'
 import validationErrorHandler from '../middlewares/validationErrorHandler.js'
 import {
   getCategoriesValidators,
@@ -12,14 +12,14 @@ router.get(
   '/',
   getCategoriesValidators,
   validationErrorHandler,
-  categoriesController.getCategories
+  CategoriesController.getCategories
 )
 
 router.get(
   '/:id',
   getSingleCategoryValidators,
   validationErrorHandler,
-  categoriesController.getCategoryById
+  CategoriesController.getCategoryById
 )
 
 export default router
