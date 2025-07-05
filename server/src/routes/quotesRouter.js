@@ -13,17 +13,17 @@ router.get(
 )
 
 router.get(
-  '/:id',
-  QuotesValidator.getSingleQuoteValidators,
-  validationErrorHandler,
-  QuotesController.getQuoteById
-)
-
-router.get(
   '/random',
   QuotesValidator.getRandomQuotesValidators,
   validationErrorHandler,
   QuotesController.getRandomQuotes
+)
+
+router.get(
+  '/:id',
+  QuotesValidator.getSingleQuoteValidators,
+  validationErrorHandler,
+  QuotesController.getQuoteById
 )
 
 router.post(
