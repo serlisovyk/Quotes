@@ -25,7 +25,7 @@ export default function InputField({
         ref={inputRef}
         id={id}
         placeholder={placeholder}
-        value={value}
+        value={value ?? ''}
         onChange={onChange}
         className="py-2 pl-3 pr-12 w-full border border-gray-300 rounded dark:bg-gray-800 dark:border-gray-600 text-gray-800 dark:text-white"
       />

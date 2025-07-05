@@ -4,7 +4,8 @@ import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { INITIAL_FORM_VALUES } from '@config/constants'
 import QuoteForm from '@components/QuoteForm'
-import { createQuote } from '@services/services'
+import { useCreateQuote } from '@queries/useCreateQuote'
+import { isQuoteFormValid } from '@utils/validation'
 
 export default function CreateQuotePage() {
   const [formValues, setFormValues] = useState(INITIAL_FORM_VALUES)
@@ -12,7 +13,23 @@ export default function CreateQuotePage() {
 
   const router = useRouter()
 
-  const handleSubmit = () => createQuote({ formValues, setValidationErrors, router })
+  const onSuccessRedirect = (id) => router.push(`/quotes/${id}`)
+
+  const { createQuote } = useCreateQuote(onSuccessRedirect)
+
+  const handleSubmit = () => {
+    if (!isQuoteFormValid({ values: formValues, setValidationErrors })) return
+
+    const { text, author, categories } = formValues
+
+    const payload = {
+      text,
+      author,
+      categories: categories.split(',').map((category) => category.trim()),
+    }
+
+    createQuote(payload)
+  }
 
   return (
     <QuoteForm

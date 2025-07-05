@@ -1,30 +1,23 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-import { ClipLoader } from 'react-spinners'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import Button from '@components/Button'
 import CategoryTags from '@components/CategoryTags'
-import { deleteQuoteById, findQuoteById } from '@services/services'
+import Loader from '@components/Loader'
+import { useDeleteQuote } from '@queries/useDeleteQuote'
+import { useGetSingleQuote } from '@queries/useGetSingleQuote'
 
 export default function QuotePage({ params: { id } }) {
   const router = useRouter()
 
-  const [quote, setQuote] = useState(null)
-  const [isLoading, setIsLoading] = useState(true)
+  const { quote, isLoading } = useGetSingleQuote(id)
 
-  useEffect(() => {
-    findQuoteById({ id, setIsLoading, setData: setQuote })
-  }, [])
+  const onSuccessRedirect = () => router.push('/')
 
-  if (isLoading) {
-    return (
-      <div className="flex justify-center items-center h-screen">
-        <ClipLoader size={60} color="#4A90E2" />
-      </div>
-    )
-  }
+  const { deleteQuote } = useDeleteQuote(id, onSuccessRedirect)
+
+  if (isLoading) return <Loader isFullHeight={true} />
 
   if (!quote) {
     return (
@@ -52,11 +45,7 @@ export default function QuotePage({ params: { id } }) {
         <Link href={`/quotes/${quote.id}/edit`}>
           <Button text="Edit" variant="primary" />
         </Link>
-        <Button
-          onClick={() => deleteQuoteById({ id, router })}
-          text="Delete"
-          variant="danger"
-        />
+        <Button onClick={deleteQuote} text="Delete" variant="danger" />
       </div>
     </div>
   )

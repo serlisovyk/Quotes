@@ -2,49 +2,50 @@
 
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
-import { ClipLoader } from 'react-spinners'
-import { INITIAL_FORM_VALUES } from '@config/constants'
 import QuoteForm from '@components/QuoteForm'
-import { editQuote, findQuoteById } from '@services/services'
+import Loader from '@components/Loader'
+import { INITIAL_FORM_VALUES } from '@config/constants'
+import { isQuoteFormValid } from '@utils/validation'
+import { useUpdateQuote } from '@queries/useUpdateQuote'
+import { useGetSingleQuote } from '@queries/useGetSingleQuote'
 
-export default function EditQuotePage({ params }) {
-  const { id } = params
+export default function EditQuotePage({ params: { id } }) {
+  const router = useRouter()
+
   const [formValues, setFormValues] = useState(INITIAL_FORM_VALUES)
   const [validationErrors, setValidationErrors] = useState({})
-  const [isLoading, setIsLoading] = useState(true)
-
-  const router = useRouter()
 
   const formatFormValues = ({ text, author, categories }) => ({
     text,
     author,
-    categories: categories.join(', '), // Assuming categories is an array
+    categories: categories.join(', '),
   })
 
-  useEffect(() => {
-    findQuoteById({
-      id,
-      setIsLoading,
-      setData: setFormValues,
-      formatData: formatFormValues,
-    })
-  }, [])
+  const { quote, isLoading } = useGetSingleQuote(id, formatFormValues)
 
-  if (isLoading) {
-    return (
-      <div className="flex justify-center items-center h-screen">
-        <ClipLoader size={60} color="#4A90E2" />
-      </div>
-    )
+  useEffect(() => {
+    if (quote) setFormValues(quote)
+  }, [quote])
+
+  const onSuccessRedirect = () => router.push(`/quotes/${id}`)
+
+  const { updateQuote } = useUpdateQuote(id, onSuccessRedirect)
+
+  const handleSubmit = () => {
+    if (!isQuoteFormValid({ values: formValues, setValidationErrors })) return
+
+    const { text, author, categories } = formValues
+
+    const payload = {
+      text,
+      author,
+      categories: categories.split(',').map((category) => category.trim()),
+    }
+
+    updateQuote(payload)
   }
 
-  const handleSubmit = () =>
-    editQuote({
-      formValues,
-      setValidationErrors,
-      router,
-      quoteId: id,
-    })
+  if (isLoading) return <Loader isFullHeight={true} />
 
   return (
     <QuoteForm

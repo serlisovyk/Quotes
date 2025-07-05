@@ -18,7 +18,6 @@ export default function RandomQuotesPage() {
     <div className="p-4">
       <h1 className="text-3xl mb-6 text-center dark:text-white">Random Quotes</h1>
       <Button onClick={refetch} text="Get Random Quotes" />
-
       {isLoading ? <Loader /> : <Quotes quotes={quotes} />}
     </div>
   )
