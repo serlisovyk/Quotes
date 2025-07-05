@@ -1,6 +1,6 @@
-import { INITIAL_FORM_VALUES } from '@config/constants'
 import QuoteFormFields from '@components/QuoteFormFields'
 import Button from '@components/Button'
+import { INITIAL_FORM_VALUES } from '@config/constants'
 
 export default function QuoteForm({
   values,

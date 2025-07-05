@@ -1,7 +1,7 @@
 'use client'
 
-import { useEffect, useState } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
+import { useEffect, useState } from 'react'
 import deepEqual from 'deep-equal'
 import Button from '@components/Button'
 import InputField from '@components/InputField'
@@ -17,14 +17,14 @@ import {
 import { useGetSearchQuotes } from '@queries/useGetSearchQuotes'
 
 export default function SearchQuotesPage() {
+  const router = useRouter()
+  const searchParams = useSearchParams()
+
   const [searchValues, setSearchValues] = useState(INITIAL_SEARCH_VALUES)
   const [searchButtonClicked, setSearchButtonClicked] = useState(false)
   const [validationErrors, setValidationErrors] = useState({})
   const [queryParams, setQueryParams] = useState({})
   const [searchSubmitted, setSearchSubmitted] = useState(false)
-
-  const router = useRouter()
-  const searchParams = useSearchParams()
 
   useEffect(() => {
     const qsValues = createSearchValuesFromQueryString(searchParams)

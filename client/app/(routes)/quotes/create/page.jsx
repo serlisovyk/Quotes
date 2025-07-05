@@ -1,17 +1,17 @@
 'use client'
 
-import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { INITIAL_FORM_VALUES } from '@config/constants'
+import { useState } from 'react'
 import QuoteForm from '@components/QuoteForm'
-import { useCreateQuote } from '@queries/useCreateQuote'
+import { INITIAL_FORM_VALUES } from '@config/constants'
 import { isQuoteFormValid } from '@utils/validation'
+import { useCreateQuote } from '@queries/useCreateQuote'
 
 export default function CreateQuotePage() {
+  const router = useRouter()
+
   const [formValues, setFormValues] = useState(INITIAL_FORM_VALUES)
   const [validationErrors, setValidationErrors] = useState({})
-
-  const router = useRouter()
 
   const onSuccessRedirect = (id) => router.push(`/quotes/${id}`)
 

@@ -28,11 +28,14 @@ export default function ThemeToggle() {
       aria-label="Toggle color scheme button"
       className="ml-auto rounded p-2 text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-500"
     >
-      {isDark ? (
-        <Image src={sun} alt="Light mode icon" className="h-7 w-7" />
-      ) : (
-        <Image src={moon} alt="Dark mode icon" className="h-7 w-7" />
-      )}
+      <Image
+        src={isDark ? sun : moon}
+        alt={isDark ? 'Light mode icon' : 'Dark mode icon'}
+        width={28}
+        height={28}
+        unoptimized
+        priority
+      />
     </button>
   )
 }
