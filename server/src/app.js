@@ -6,6 +6,8 @@ import errorMiddleware from './middlewares/errorMiddleware.js'
 
 const app = express()
 
+app.use(helmet())
+app.use(rateLimit({ windowMs: 15 * 60 * 1000, max: 100 })) // 100 queries / 15 min.
 app.use(cors())
 app.use(express.json())
 
