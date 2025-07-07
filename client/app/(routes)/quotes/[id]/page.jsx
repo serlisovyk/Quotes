@@ -27,7 +27,7 @@ export default function QuotePage({ params: { id } }) {
 
   return (
     <div>
-      <div className="max-w-4xl mx-auto p-6 mt-7 bg-white shadow-lg rounded-lg dark:bg-gray-800">
+      <div className="max-w-6xl mx-auto p-6 mt-7 bg-white shadow-lg rounded-lg dark:bg-gray-800">
         <h2 className="text-xl md:text-2xl font-bold text-center mb-6 text-violet-900 dark:text-violet-300">
           {quote.text}
         </h2>

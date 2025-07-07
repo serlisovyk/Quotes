@@ -22,7 +22,13 @@ export function highlightText(text, searchText) {
   })
 }
 
-export function getDisplayedCategories(categories, selectedCategory) {
+export function getDisplayedCategories(
+  categories,
+  selectedCategory,
+  isSingleQuotePage = false
+) {
+  if (isSingleQuotePage) return categories
+
   const visible = categories.slice(0, MAX_VISIBLE_CATEGORIES)
 
   if (!selectedCategory || visible.includes(selectedCategory)) {

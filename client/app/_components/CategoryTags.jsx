@@ -7,7 +7,11 @@ export default function CategoryTags({
   selectedCategory,
   isSingleQuotePage,
 }) {
-  const displayedCategories = getDisplayedCategories(categories, selectedCategory)
+  const displayedCategories = getDisplayedCategories(
+    categories,
+    selectedCategory,
+    isSingleQuotePage
+  )
 
   return (
     <div
@@ -23,7 +27,7 @@ export default function CategoryTags({
           isSingleQuotePage={isSingleQuotePage}
         />
       ))}
-      {categories.length > MAX_VISIBLE_CATEGORIES && (
+      {!isSingleQuotePage && categories.length > MAX_VISIBLE_CATEGORIES && (
         <span className="text-3xl">...</span>
       )}
     </div>
