@@ -1,5 +1,7 @@
 import express from 'express'
 import cors from 'cors'
+import helmet from 'helmet'
+import rateLimit from 'express-rate-limit'
 import quotesRouter from './routes/quotesRouter.js'
 import categoriesRouter from './routes/categoriesRouter.js'
 import errorMiddleware from './middlewares/errorMiddleware.js'
