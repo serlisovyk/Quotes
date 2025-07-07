@@ -1,6 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import csv from 'csv-parser'
+import { fileURLToPath } from 'url'
 import Quote from '../../models/Quote.js'
 import Category from '../../models/Category.js'
 import sequelize from '../db.js'
@@ -9,6 +10,9 @@ import {
   CSV_IMPORT_BATCH_TIMEOUT,
 } from '../../config/config.js'
 import { validateAndSplitCategories, pauseStream } from '../../utils/utils.js'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
 const CSV_FILENAME = path.resolve(__dirname, '../data/quotes.csv')
 
