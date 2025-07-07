@@ -1,5 +1,5 @@
 import { Sequelize } from 'sequelize'
-import { DB } from './config.js'
+import { DB } from '../config/config.js'
 
 const sequelize = new Sequelize(DB.NAME, DB.USER, DB.PASSWORD, {
   dialect: DB.DIALECT,

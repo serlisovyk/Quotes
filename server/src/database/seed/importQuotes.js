@@ -3,7 +3,7 @@ import path from 'path'
 import csv from 'csv-parser'
 import Quote from '../../models/Quote.js'
 import Category from '../../models/Category.js'
-import sequelize from '../../config/db.js'
+import sequelize from '../db.js'
 import {
   CSV_IMPORT_BATCH_SIZE,
   CSV_IMPORT_BATCH_TIMEOUT,

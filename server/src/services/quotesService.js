@@ -1,7 +1,7 @@
 import { Op } from 'sequelize'
-import sequelize from '../config/db.js'
 import Quote from '../models/Quote.js'
 import Category from '../models/Category.js'
+import sequelize from '../database/db.js'
 import { attributes } from '../constants/constants.js'
 
 const includeCategoryConfig = {
@@ -60,11 +60,11 @@ export const deleteSingleQuote = async (id) => {
 }
 
 export const createQuote = async ({ text, author, categories }) => {
-  const createdQuoteId = await sequelize.transaction(async (t) => {
-    const quote = await Quote.create({ text, author }, { transaction: t })
+  const createdQuoteId = await sequelize.transaction(async (transaction) => {
+    const quote = await Quote.create({ text, author }, { transaction })
 
-    const categoryInstances = await findOrCreateCategories(categories, t)
-    await quote.setCategories(categoryInstances, { transaction: t })
+    const categoryInstances = await findOrCreateCategories(categories, transaction)
+    await quote.setCategories(categoryInstances, { transaction })
 
     return quote.id
   })
@@ -73,19 +73,19 @@ export const createQuote = async ({ text, author, categories }) => {
 }
 
 export const modifySingleQuote = async (id, { text, author, categories }) => {
-  const modifiedQuoteId = await sequelize.transaction(async (t) => {
-    const quote = await Quote.findByPk(id, { transaction: t })
+  const modifiedQuoteId = await sequelize.transaction(async (transaction) => {
+    const quote = await Quote.findByPk(id, { transaction })
 
     if (!quote) return null
 
     if (text) quote.text = text
     if (author) quote.author = author
 
-    await quote.save({ transaction: t })
+    await quote.save({ transaction })
 
     if (categories) {
-      const categoryInstances = await findOrCreateCategories(categories, t)
-      await quote.setCategories(categoryInstances, { transaction: t })
+      const categoryInstances = await findOrCreateCategories(categories, transaction)
+      await quote.setCategories(categoryInstances, { transaction })
     }
 
     return quote.id

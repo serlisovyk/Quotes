@@ -1,5 +1,5 @@
 import { QueryTypes } from 'sequelize'
-import sequelize from '../../config/db.js'
+import sequelize from '../db.js'
 import Category from '../../models/Category.js'
 import Quote from '../../models/Quote.js'
 import QuoteCategory from '../../models/QuoteCategory.js'

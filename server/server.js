@@ -1,5 +1,5 @@
 import app from './src/app.js'
-import dbInit from './src/config/dbInit.js'
+import dbInit from './src/database/dbInit.js'
 import { APP_PORT } from './src/config/config.js'
 
 const startServer = async () => {

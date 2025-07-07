@@ -1,7 +1,7 @@
 import { TEXT, STRING } from 'sequelize'
-import sequelize from '../config/db.js'
 import QuoteCategory from './QuoteCategory.js'
 import Category from './Category.js'
+import sequelize from '../database/db.js'
 import { afterFindHook } from '../utils/utils.js'
 
 const Quote = sequelize.define(
