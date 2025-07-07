@@ -1,5 +1,9 @@
 import * as QuotesService from '../services/quotesService.js'
-import { DEFAULT_QUOTES_LIMIT, RANDOM_QUOTES_LIMIT } from '../constants/constants.js'
+import {
+  DEFAULT_QUOTES_LIMIT,
+  getQuoteNotFoundErrorMessage,
+  RANDOM_QUOTES_LIMIT,
+} from '../constants/constants.js'
 import { asyncErrorHandler } from '../utils/utils.js'
 
 export const getQuotes = asyncErrorHandler(async (req, res) => {
@@ -32,7 +36,7 @@ export const getQuoteById = asyncErrorHandler(async (req, res) => {
   if (quote) {
     res.json(quote)
   } else {
-    res.status(404).json({ message: `Quote with ID ${quoteId} not found` })
+    res.status(404).json({ message: getQuoteNotFoundErrorMessage(quoteId) })
   }
 })
 
@@ -42,7 +46,7 @@ export const deleteQuoteById = asyncErrorHandler(async (req, res) => {
   if (deletedQuoteId) {
     res.status(204).send()
   } else {
-    res.status(404).json({ message: `Quote with ID ${quoteId} not found` })
+    res.status(404).json({ message: getQuoteNotFoundErrorMessage(quoteId) })
   }
 })
 
@@ -54,7 +58,7 @@ export const patchQuoteById = asyncErrorHandler(async (req, res) => {
   if (modifiedQuote) {
     res.json(modifiedQuote)
   } else {
-    res.status(404).json({ message: `Quote with ID ${quoteId} not found` })
+    res.status(404).json({ message: getQuoteNotFoundErrorMessage(quoteId) })
   }
 })
 
