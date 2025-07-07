@@ -3,7 +3,7 @@ import { fetchQuotes } from '@services/services'
 
 export const useGetSearchQuotes = (queryParams, enabled) => {
   const {
-    data: quotes = [],
+    data: { quotes = [], total = 0 } = {},
     isLoading,
     isFetching,
     error,
@@ -17,5 +17,5 @@ export const useGetSearchQuotes = (queryParams, enabled) => {
     placeholderData: [],
   })
 
-  return { quotes, isLoading: isLoading || isFetching, error }
+  return { quotes, total, isLoading: isLoading || isFetching, error }
 }

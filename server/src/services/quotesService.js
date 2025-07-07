@@ -15,32 +15,37 @@ export const findQuotes = async ({ limit, offset, author, text, category }) => {
   if (author) whereClause.author = { [Op.iLike]: `%${author}%` }
   if (text) whereClause.text = { [Op.iLike]: `%${text}%` }
 
-  const quotes = await Quote.findAll({
+  const baseQuery = {
     attributes,
-    limit,
-    offset,
     order: [['id', 'ASC']],
+    where: whereClause,
     include: {
       ...includeCategoryConfig,
-      where: category ? { name: category } : {},
+      ...(category ? { where: { name: category } } : {}),
     },
-    where: whereClause,
+  }
+
+  const { rows: pageQuotes, count: total } = await Quote.findAndCountAll({
+    ...baseQuery,
+    distinct: true,
+    limit,
+    offset,
   })
 
   if (!category) {
-    return quotes
-  } else {
-    const quotesIds = quotes.map((quote) => quote.id)
-
-    const quotesByIds = await Quote.findAll({
-      attributes,
-      order: [['id', 'ASC']],
-      include: includeCategoryConfig,
-      where: { id: quotesIds },
-    })
-
-    return quotesByIds
+    return { total, quotes: pageQuotes }
   }
+
+  const ids = pageQuotes.map((q) => q.id)
+
+  const quotes = await Quote.findAll({
+    attributes,
+    order: [['id', 'ASC']],
+    include: includeCategoryConfig,
+    where: { id: ids },
+  })
+
+  return { total, quotes }
 }
 
 export const findRandomQuotes = async (limit) =>
