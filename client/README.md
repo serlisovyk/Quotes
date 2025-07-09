@@ -8,55 +8,20 @@ This is a Next.js project for displaying and managing quotes. It allows users to
 
 To run the app locally, first, install the dependencies:
 
-```bash
-npm install
-```
-
-Then, start the development server:
-
-```bash
-npm run dev
-```
+1. `cd client`
+1. `npm install`
+1. `npm run dev`
 
 This will start the app at [http://localhost:4000](http://localhost:4000).
 
-You can also use other package managers:
-
-```bash
-# With yarn
-yarn dev
-
-# With pnpm
-pnpm dev
-
-# With bun
-bun dev
-```
-
-The app will automatically reload when you make changes to the code. Open [http://localhost:4000](http://localhost:4000) with your browser to see the result.
-
-### Running Tests
-
-To run unit tests for the app, use the following command:
-
-```bash
-npm test
-```
-
-To run tests in watch mode, use:
-
-```bash
-npm run test:watch
-```
-
 ## Project Structure
-
-Here’s an overview of the project’s file and folder structure:
 
 ```text
 app
 ├── _components        # Shared components like buttons and forms
 ├── _config            # Configuration files, including API endpoints
+├── _queries            # Tanstack queries for fetching data
+├── _services         # Services for interacting with the API
 ├── _utils             # Utility functions for fetching data and helper functions
 └── (routes)           # Dynamic routes for handling different pages
     ├── quotes         # Routes related to managing quotes
@@ -69,13 +34,8 @@ app
     ├── globals.css    # Global CSS styles
     ├── layout.js      # Main layout component
     └── page.js        # Page for displaying random quotes
+    └── query-provider.js # Query provider for Tanstack queries
 ```
-
-### Quotes Functionality
-
-- **Random Quotes**: View random quotes from the API.
-- **Search Quotes**: Search quotes by text, author, or category.
-- **Create/Edit/Delete Quotes**: Allows users to add new quotes, edit existing quotes, or delete quotes.
 
 ## API Endpoints
 
@@ -87,28 +47,3 @@ The app interacts with the following backend API endpoints:
 - GET **`/quotes/:id`**: Fetches a specific quote by its ID.
 - PATCH **`/quotes/:id`**: Edits an existing quote.
 - DELETE **`/quotes/:id`**: Deletes a quote.
-
-## Deployment
-
-You can deploy the app using the [Vercel platform](https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app-readme) (from the creators of Next.js). Here’s how to do it:
-
-1. Install the Vercel CLI:
-
-```bash
-npm i -g vercel
-```
-
-2. Deploy the app:
-
-```bash
-vercel
-```
-
-Follow the prompts to complete your deployment.
-
-## Learn More
-
-To learn more about Next.js, you can check out these resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - Learn more about the features and API.
-- [Learn Next.js](https://nextjs.org/learn) - A step-by-step interactive tutorial.
