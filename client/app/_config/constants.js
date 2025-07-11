@@ -24,6 +24,7 @@ export const INITIAL_SEARCH_VALUES = {
 
 export const ROUTES = {
   HOME: '/',
+  QUOTES: '/quotes',
   RANDOM: '/random',
   SEARCH: '/search',
   CREATE: '/quotes/create',

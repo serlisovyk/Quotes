@@ -12,7 +12,15 @@ import { useGetSingleQuote } from '@queries/useGetSingleQuote'
 export default function HomePage() {
   const router = useRouter()
 
-  const { quote, isLoading } = useGetSingleQuote(MY_QUOTE_ID)
+  const { quote, isLoading, error } = useGetSingleQuote(MY_QUOTE_ID)
+
+  if (error) {
+    return (
+      <p className="text-gray-600 text-center p-10">
+        Error while fetching quotes for the home page. Please try again later.
+      </p>
+    )
+  }
 
   if (isLoading) return <Loader isFullHeight={true} />
 

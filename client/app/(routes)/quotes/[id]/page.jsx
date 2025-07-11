@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Button from '@components/Button'
 import CategoryTags from '@components/CategoryTags'
 import Loader from '@components/Loader'
+import { ROUTES } from '@config/constants'
 import { useDeleteQuote } from '@queries/useDeleteQuote'
 import { useGetSingleQuote } from '@queries/useGetSingleQuote'
 
@@ -13,7 +14,7 @@ export default function QuotePage({ params: { id } }) {
 
   const { quote, isLoading } = useGetSingleQuote(id)
 
-  const onSuccessRedirect = () => router.push('/')
+  const onSuccessRedirect = () => router.push(ROUTES.HOME)
 
   const { deleteQuote } = useDeleteQuote(id, onSuccessRedirect)
 

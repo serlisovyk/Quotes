@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation'
 import { useState, useEffect } from 'react'
 import QuoteForm from '@components/QuoteForm'
 import Loader from '@components/Loader'
-import { INITIAL_FORM_VALUES } from '@config/constants'
+import { INITIAL_FORM_VALUES, ROUTES } from '@config/constants'
 import { isQuoteFormValid } from '@utils/validation'
 import { useUpdateQuote } from '@queries/useUpdateQuote'
 import { useGetSingleQuote } from '@queries/useGetSingleQuote'
@@ -27,7 +27,7 @@ export default function EditQuotePage({ params: { id } }) {
     if (quote) setFormValues(quote)
   }, [quote])
 
-  const onSuccessRedirect = () => router.push(`/quotes/${id}`)
+  const onSuccessRedirect = () => router.push(`${ROUTES.QUOTES}/${id}`)
 
   const { updateQuote } = useUpdateQuote(id, onSuccessRedirect)
 
