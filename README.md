@@ -6,34 +6,37 @@ This is a Fullstack project for displaying and managing quotes. It allows users 
   <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/postgresql-colored.svg" width="40" height="40" alt="Postgresql" />
   
   <img width="12" />
-  
+
   <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/nodejs-colored.svg" width="40" height="40" alt="NodeJS" />
 
   <img width="12" />
-  
+
   <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/express-colored.svg" width="40" height="40" alt="Express" />
+
+  <img width="12" />
+
+  <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/docker-colored.svg" width="40" height="40" alt="Docker" />
 
   <br>
   <br>
   
   <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/nextjs-colored.svg" width="40" height="40" alt="Next js" />
 
- <img width="12" />
-  
+  <img width="12" />
+
   <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/react-colored.svg" width="40" height="40" alt="React" />
 
   <img width="12" />
-  
-  <img src="https://images.seeklogo.com/logo-png/43/1/react-query-logo-png_seeklogo-435661.png" width="40" height="40" alt="React query" />
 
   <img width="12" />
-  
+
   <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/tailwindcss-colored.svg" width="40" height="40" alt="Tailwind" />
 
   <img width="12" />
-  
+
   <img src="https://www.svgrepo.com/show/353930/jest.svg" width="40" height="40" alt="Jest" />
 
+  <img width="12" />
 </p>
 
 ## Getting Started
