@@ -2,6 +2,7 @@ import localFont from 'next/font/local'
 import { ThemeProvider } from 'next-themes'
 import { ToastContainer } from 'react-toastify'
 import Header from '@components/Header'
+import Footer from '@components/Footer'
 import QueryProvider from './query-provider'
 import './globals.css'
 import 'react-toastify/dist/ReactToastify.css'
@@ -37,6 +38,7 @@ export default function RootLayout({ children }) {
           <QueryProvider>
             <main className="container mx-auto p-4">{children}</main>
           </QueryProvider>
+          <Footer />
         </ThemeProvider>
       </body>
     </html>

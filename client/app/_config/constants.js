@@ -22,10 +22,18 @@ export const INITIAL_SEARCH_VALUES = {
   offset: '',
 }
 
+export const ROUTES = {
+  HOME: '/',
+  RANDOM: '/random',
+  SEARCH: '/search',
+  CREATE: '/quotes/create',
+}
+
 export const menuItems = [
-  { href: '/', text: 'Random' },
-  { href: '/search', text: 'Search' },
-  { href: '/quotes/create', text: 'Create New' },
+  { href: ROUTES.HOME, text: 'Home' },
+  { href: ROUTES.RANDOM, text: 'Random' },
+  { href: ROUTES.SEARCH, text: 'Search' },
+  { href: ROUTES.CREATE, text: 'Create New' },
 ]
 
 export const CATEGORY_NAME_REGEX = /^[a-z0-9\-]+$/
@@ -37,3 +45,5 @@ export const RANDOM_QUOTES_API_ENDPOINT = 'quotes/random'
 export const MAX_VISIBLE_CATEGORIES = 10
 
 export const MAX_VISIBLE_TEXT_LENGTH = 200
+
+export const MY_QUOTE_ID = 418402
