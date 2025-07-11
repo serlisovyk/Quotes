@@ -3,6 +3,8 @@
 - (Better) Import all DB data from the dump file `db-without-rare-categories.sql.gz` directly to the database without importQuotes.js script
 - Import data from the `quotes.csv` file and then remove rare categories (see detailed steps below)
 
+NOTE: To get the file write to me on github / linkedin
+
 ## OPTION 1 - Load data from the dump file
 
 1. `cd server`

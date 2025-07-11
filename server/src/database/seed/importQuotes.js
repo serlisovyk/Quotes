@@ -14,7 +14,7 @@ import { validateAndSplitCategories, pauseStream } from '../../utils/utils.js'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
-const CSV_FILENAME = path.resolve(__dirname, '../data/quotes.csv')
+const CSV_FILENAME = path.resolve(__dirname, '../data/test-quotes.csv')
 
 async function importQuotes() {
   try {
