@@ -8,6 +8,7 @@ export default function QuoteForm({
   validationErrors,
   setValidationErrors,
   handleSubmit,
+  isLoading,
   buttonText,
 }) {
   const handleReset = () => {
@@ -26,7 +27,7 @@ export default function QuoteForm({
         validationErrors={validationErrors}
       />
       <div className="flex justify-center gap-4 mb-6">
-        <Button onClick={handleSubmit} text={buttonText} />
+        <Button onClick={handleSubmit} text={buttonText} disabled={isLoading} />
         <Button onClick={handleReset} text="Reset" variant="secondary" />
       </div>
     </div>

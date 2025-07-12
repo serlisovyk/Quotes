@@ -1,6 +1,11 @@
-export default function Button({ onClick, text, variant = 'primary' }) {
+export default function Button({
+  onClick,
+  text,
+  variant = 'primary',
+  disabled = false,
+}) {
   const baseClasses =
-    'px-6 py-3 text-xl rounded-lg hover:bg-opacity-80 focus:outline-none focus:ring-2 focus:ring-opacity-50'
+    'px-6 py-3 text-xl rounded-lg hover:bg-opacity-80 focus:outline-none focus:ring-2 focus:ring-opacity-50 disabled:opacity-50 disabled:cursor-not-allowed'
 
   const variantClasses = {
     primary: 'bg-violet-900 text-white focus:ring-violet-600 hover:bg-violet-700',
@@ -13,6 +18,7 @@ export default function Button({ onClick, text, variant = 'primary' }) {
       <button
         onClick={onClick}
         className={`${baseClasses} ${variantClasses[variant]}`}
+        disabled={disabled}
       >
         {text}
       </button>

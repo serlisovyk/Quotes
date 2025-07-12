@@ -19,7 +19,7 @@ export default function CategoryTags({
         isSingleQuotePage && 'justify-center gap-3'
       } flex flex-wrap mt-2`}
     >
-      {displayedCategories.map((category) => (
+      {displayedCategories?.map((category) => (
         <CategoryTag
           key={category}
           category={category}

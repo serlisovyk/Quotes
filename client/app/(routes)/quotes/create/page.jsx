@@ -15,7 +15,7 @@ export default function CreateQuotePage() {
 
   const onSuccessRedirect = (id) => router.push(`${ROUTES.QUOTES}/${id}`)
 
-  const { createQuote } = useCreateQuote(onSuccessRedirect)
+  const { createQuote, isPending } = useCreateQuote(onSuccessRedirect)
 
   const handleSubmit = () => {
     if (!isQuoteFormValid({ values: formValues, setValidationErrors })) return
@@ -38,6 +38,7 @@ export default function CreateQuotePage() {
       validationErrors={validationErrors}
       setValidationErrors={setValidationErrors}
       handleSubmit={handleSubmit}
+      isLoading={isPending}
       buttonText="Create"
     />
   )

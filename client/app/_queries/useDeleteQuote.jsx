@@ -5,7 +5,7 @@ import { deleteQuote } from '@services/services'
 export const useDeleteQuote = (quoteId, onSuccessRedirect) => {
   const queryClient = useQueryClient()
 
-  const { mutate } = useMutation({
+  const { mutate, isPending } = useMutation({
     mutationFn: () => deleteQuote(quoteId),
     onSuccess: () => {
       toast.success('Quote was successfully deleted!')
@@ -15,5 +15,5 @@ export const useDeleteQuote = (quoteId, onSuccessRedirect) => {
     },
   })
 
-  return { deleteQuote: mutate }
+  return { deleteQuote: mutate, isPending }
 }

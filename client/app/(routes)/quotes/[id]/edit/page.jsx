@@ -29,7 +29,7 @@ export default function EditQuotePage({ params: { id } }) {
 
   const onSuccessRedirect = () => router.push(`${ROUTES.QUOTES}/${id}`)
 
-  const { updateQuote } = useUpdateQuote(id, onSuccessRedirect)
+  const { updateQuote, isPending } = useUpdateQuote(id, onSuccessRedirect)
 
   const handleSubmit = () => {
     if (!isQuoteFormValid({ values: formValues, setValidationErrors })) return
@@ -54,6 +54,7 @@ export default function EditQuotePage({ params: { id } }) {
       validationErrors={validationErrors}
       setValidationErrors={setValidationErrors}
       handleSubmit={handleSubmit}
+      isLoading={isPending}
       buttonText="Update"
     />
   )

@@ -16,11 +16,11 @@ export default function QuotePage({ params: { id } }) {
 
   const onSuccessRedirect = () => router.push(ROUTES.HOME)
 
-  const { deleteQuote } = useDeleteQuote(id, onSuccessRedirect)
+  const { deleteQuote, isPending } = useDeleteQuote(id, onSuccessRedirect)
 
   if (isLoading) return <Loader isFullHeight={true} />
 
-  if (!quote) {
+  if (!quote.id) {
     return (
       <p className="text-center text-2xl mt-10">{`Quote with id ${id} not found.`}</p>
     )
@@ -46,7 +46,12 @@ export default function QuotePage({ params: { id } }) {
         <Link href={`/quotes/${quote.id}/edit`}>
           <Button text="Edit" variant="primary" />
         </Link>
-        <Button onClick={deleteQuote} text="Delete" variant="danger" />
+        <Button
+          onClick={deleteQuote}
+          text="Delete"
+          variant="danger"
+          disabled={isPending}
+        />
       </div>
     </div>
   )
