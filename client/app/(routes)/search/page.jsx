@@ -7,6 +7,7 @@ import Button from '@components/Button'
 import Quotes from '@components/Quotes'
 import Loader from '@components/Loader'
 import SearchFields from '@components/SearchForm'
+import Pagination from '@components/Pagination'
 import { INITIAL_SEARCH_VALUES } from '@config/constants'
 import {
   createSearchQueryString,
@@ -43,7 +44,10 @@ export default function SearchQuotesPage() {
 
   const isEnabled = searchSubmitted && Object.keys(queryParams).length > 0
 
-  const { quotes, isLoading, error } = useGetSearchQuotes(queryParams, isEnabled)
+  const { quotes, total, isLoading, error } = useGetSearchQuotes(
+    queryParams,
+    isEnabled
+  )
 
   const handleSearch = () => {
     setSearchButtonClicked(true)
@@ -89,11 +93,19 @@ export default function SearchQuotesPage() {
       {isLoading ? (
         <Loader />
       ) : quotes.length ? (
-        <Quotes
-          quotes={quotes}
-          selectedCategory={searchValues.category}
-          searchText={searchValues.text}
-        />
+        <>
+          <Quotes
+            quotes={quotes}
+            selectedCategory={searchValues.category}
+            searchText={searchValues.text}
+          />
+
+          <Pagination
+            total={total}
+            queryParams={queryParams}
+            setQueryParams={setQueryParams}
+          />
+        </>
       ) : (
         searchSubmitted && (
           <p className="text-2xl pt-10 text-center text-gray-600 dark:text-gray-400">

@@ -43,6 +43,10 @@ export const QUOTES_API_ENDPOINT = 'quotes'
 
 export const RANDOM_QUOTES_API_ENDPOINT = 'quotes/random'
 
+export const DEFAULT_SEARCH_LIMIT = 10
+
+export const DEFAULT_SEARCH_OFFSET = 0
+
 export const MAX_VISIBLE_CATEGORIES = 10
 
 export const MAX_VISIBLE_TEXT_LENGTH = 200
