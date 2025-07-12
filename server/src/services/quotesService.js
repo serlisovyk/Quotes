@@ -59,11 +59,6 @@ export const findRandomQuotes = async (limit) =>
 export const findSingleQuote = async (id) =>
   await Quote.findByPk(id, { attributes, include: includeCategoryConfig })
 
-export const deleteSingleQuote = async (id) => {
-  const count = await Quote.destroy({ where: { id } })
-  if (count) return id
-}
-
 export const createQuote = async ({ text, author, categories }) => {
   const createdQuoteId = await sequelize.transaction(async (transaction) => {
     const quote = await Quote.create({ text, author }, { transaction })
@@ -97,6 +92,11 @@ export const modifySingleQuote = async (id, { text, author, categories }) => {
   })
 
   return await findSingleQuote(modifiedQuoteId)
+}
+
+export const deleteSingleQuote = async (id) => {
+  const count = await Quote.destroy({ where: { id } })
+  if (count) return id
 }
 
 async function findOrCreateCategories(categoryNames, transaction) {

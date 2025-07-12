@@ -70,10 +70,10 @@ export default function HomePage() {
         </div>
       </section>
       <section className="flex flex-col sm:flex-row justify-center md:mb-10">
-        <Button onClick={routeToRandomQuotesPage} text="Check random quotes" />
+        <Button onClick={routeToRandomQuotesPage} text="Random Quotes" />
         <Button
           onClick={routeToSearchPage}
-          text="Go to search page"
+          text="Search Quotes"
           variant="secondary"
         />
       </section>

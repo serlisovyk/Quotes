@@ -23,6 +23,10 @@ export const getQuotesValidators = [
     ),
 ]
 
+export const getRandomQuotesValidators = [
+  query('limit').optional().trim().isInt({ min: 1, max: 20 }),
+]
+
 export const postQuoteValidators = [
   body('text')
     .trim()
@@ -43,10 +47,6 @@ export const postQuoteValidators = [
     .withMessage(
       'Each category must contain only lowercase letters, numbers and dashes'
     ),
-]
-
-export const getRandomQuotesValidators = [
-  query('limit').optional().trim().isInt({ min: 1, max: 20 }),
 ]
 
 const quoteIdParamValidator = param('id')
