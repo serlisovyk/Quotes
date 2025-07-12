@@ -9,7 +9,7 @@ export default function Button({ onClick, text, variant = 'primary' }) {
   }
 
   return (
-    <div className="text-center m-5">
+    <div className="text-center m-2.5 md:m-5">
       <button
         onClick={onClick}
         className={`${baseClasses} ${variantClasses[variant]}`}

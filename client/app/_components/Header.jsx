@@ -52,7 +52,7 @@ export default function Header() {
           />
         }
 
-        <div className="hidden md:flex space-x-8 pl-20 text-xl">
+        <div className="hidden md:flex space-x-8 pl-10 lg:pl-20 text-xl">
           <MenuItems />
         </div>
 

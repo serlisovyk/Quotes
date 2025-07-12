@@ -30,7 +30,7 @@ export default function SearchFields({
   })
 
   return (
-    <div className="text-xl grid grid-cols-1 md:grid-cols-[1fr_1fr_1fr_0.3fr] gap-4 mb-6">
+    <div className="text-xl grid grid-cols-1 lg:grid-cols-[1fr_1fr_1fr_0.3fr] gap-4 mb-6">
       {searchInputFields.map(({ id, name, placeholder, value, error }) => (
         <InputField
           key={id}

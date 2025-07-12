@@ -2,6 +2,8 @@
 
 This is a Fullstack project for displaying and managing quotes. It allows users to view random quotes, search for quotes by various criteria, and manage (create, edit, delete) quotes through an interactive interface.
 
+## Tools
+
 <p align="left">
   <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/postgresql-colored.svg" width="40" height="40" alt="Postgresql" />
   
@@ -25,8 +27,6 @@ This is a Fullstack project for displaying and managing quotes. It allows users 
   <img width="12" />
 
   <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/react-colored.svg" width="40" height="40" alt="React" />
-
-  <img width="12" />
 
   <img width="12" />
 

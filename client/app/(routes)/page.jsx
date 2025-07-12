@@ -29,9 +29,9 @@ export default function HomePage() {
 
   return (
     <>
-      <section className="flex justify-center items-center gap-20 py-[50px]">
-        <div className="max-w-xl mt-10">
-          <div className="text-4xl font-bold italic text-violet-900 mb-5">
+      <section className="flex flex-col md:flex-row justify-center items-center gap-5 md:gap-10 lg:gap-20 py-[16px] md:py-[30px] lg:py-[50px]">
+        <div className="max-w-lg md:max-w-[350px] lg:max-w-lg">
+          <div className="text-2xl lg:text-4xl font-bold italic text-violet-900">
             Success is not final, failure is not fatal: it is the courage to continue
             that counts. <br />
             <span className="text-violet-600">&nbsp; — Winston Churchill</span>
@@ -43,19 +43,19 @@ export default function HomePage() {
             alt="Churchill photo"
             width={500}
             height={500}
-            className="rounded-full"
+            className="rounded-full w-50 h-50"
           />
         </div>
       </section>
-      <section className="pt-[150px] pb-[40px] flex justify-center items-center gap-20">
+      <section className="flex flex-col lg:flex-row justify-center items-center gap-5 md:gap-10 lg:gap-20 pt-[40px] md:pt-[70px] lg:pt-[150px] pb-[20px] lg:pb-[40px]">
         <div className="max-w-xl text-xl text-indigo-400">
-          <div className="mb-5">
+          <div className="mb-2 md:mb-5">
             These are the words of a politician, soldier, journalist, and true leader
             — who traversed a long road of trials; his words and steely will reshaped
             the course of history. He proved that a single resolute voice, tempered
             in adversity, can ignite an entire nation.
           </div>
-          <div className="mb-5">
+          <div className="mb-2 md:mb-5">
             It was these words by Winston Churchill that inspired me to create this
             huge and interesting project with searching, creating, editing quotes.
           </div>
@@ -65,11 +65,11 @@ export default function HomePage() {
             their social networks) and much more.
           </div>
         </div>
-        <div className="w-[500px]">
+        <div className="max-w-[500px]">
           <Quote quote={quote} />
         </div>
       </section>
-      <section className="flex justify-center mb-10">
+      <section className="flex flex-col sm:flex-row justify-center md:mb-10">
         <Button onClick={routeToRandomQuotesPage} text="Check random quotes" />
         <Button
           onClick={routeToSearchPage}
