@@ -15,6 +15,7 @@ export default function Footer() {
                 src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/github.svg"
                 width="40"
                 height="40"
+                alt="GitHub icon"
               />
             </Link>
             <Link
@@ -25,6 +26,7 @@ export default function Footer() {
                 src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/linkedin.svg"
                 width="40"
                 height="40"
+                alt="LinkedIn icon"
               />
             </Link>
           </div>
