@@ -1,21 +1,21 @@
 import Link from 'next/link'
 import CategoryTags from '@components/CategoryTags'
-import { highlightText } from '@utils/utils'
+import { renderQuoteText } from '@utils/utils'
 import { MAX_VISIBLE_TEXT_LENGTH } from '@config/constants'
 
 export default function Quote({ quote, selectedCategory, searchText }) {
   const { id, text, author, categories } = quote
 
-  const quoteText =
-    text.length > MAX_VISIBLE_TEXT_LENGTH
-      ? `${text.slice(0, MAX_VISIBLE_TEXT_LENGTH)}...`
-      : text
+  const isTruncated = text.length > MAX_VISIBLE_TEXT_LENGTH
+  const visiblePart = isTruncated ? text.slice(0, MAX_VISIBLE_TEXT_LENGTH) : text
 
   return (
     <div className="bg-gray-200 dark:bg-gray-800 p-4 shadow-md rounded-lg hover:-translate-y-1.5 hover:bg-gray-100 hover:dark:bg-gray-700 transition-transform duration 400">
       <Link href={`/quotes/${id}`}>
         <p className="mb-4 text-xl italic text-gray-900 dark:text-gray-100">
-          "{highlightText(quoteText, searchText)}"
+          "
+          {renderQuoteText({ fullText: text, visiblePart, searchText, isTruncated })}
+          "
         </p>
       </Link>
 

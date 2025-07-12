@@ -1,6 +1,40 @@
-import { MAX_VISIBLE_CATEGORIES, QUOTES_API_ENDPOINT } from '@config/constants'
+import {
+  MAX_VISIBLE_CATEGORIES,
+  QUOTES_API_ENDPOINT,
+  HIGHLIGHT_STYLES,
+} from '@config/constants'
 
 export const getSingleQuoteApiEndpoint = (id) => `${QUOTES_API_ENDPOINT}/${id}`
+
+export function renderQuoteText({ fullText, visiblePart, searchText, isTruncated }) {
+  if (!searchText || searchText.length < 3) {
+    return isTruncated ? `${visiblePart}...` : visiblePart
+  }
+
+  const search = searchText.toLowerCase()
+  const hasInVisible = visiblePart.toLowerCase().includes(search)
+  const hasInFull = fullText.toLowerCase().includes(search)
+
+  if (hasInVisible) {
+    return (
+      <>
+        {highlightText(visiblePart, searchText)}
+        {isTruncated && '...'}
+      </>
+    )
+  }
+
+  if (isTruncated && hasInFull) {
+    return (
+      <>
+        {visiblePart}
+        <span className={HIGHLIGHT_STYLES}>...</span>
+      </>
+    )
+  }
+
+  return isTruncated ? `${visiblePart}...` : visiblePart
+}
 
 export function highlightText(text, searchText) {
   if (!searchText || searchText.length < 3) return text
@@ -10,10 +44,7 @@ export function highlightText(text, searchText) {
   return parts.map((part, index) => {
     if (part.toLowerCase() === searchText.toLowerCase()) {
       return (
-        <span
-          key={index}
-          className="bg-yellow-300 dark:bg-yellow-200 dark:text-gray-800 -m-0.5 p-0.5"
-        >
+        <span key={index} className={HIGHLIGHT_STYLES}>
           {part}
         </span>
       )
