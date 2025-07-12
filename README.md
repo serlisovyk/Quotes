@@ -77,7 +77,6 @@ app
     │   └── create     # Route for creating a single quote
     ├── search         # Route related to searching for quotes
     ├── fonts          # Custom font files
-    ├── favicon.ico    # App favicon
     ├── globals.css    # Global CSS styles
     ├── layout.js      # Main layout component
     └── page.js        # Page for displaying random quotes
