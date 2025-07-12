@@ -42,7 +42,7 @@ export default function Pagination({ total, queryParams, setQueryParams }) {
   }
 
   return (
-    <div className="flex flex-wrap justify-center items-center gap-2 mt-8">
+    <div className="flex flex-nowrap overflow-x-auto gap-2 justify-start items-center mt-8 px-2 max-w-full">
       <Button
         text="Prev"
         disabled={currentPage === 1}
