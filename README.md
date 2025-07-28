@@ -61,7 +61,7 @@ To run the app locally, first, install the dependencies:
 1. `npm install`
 1. `npm run dev`
 
-## Project Structure
+## Frontend Folders Structure
 
 ```text
 app
