@@ -44,9 +44,11 @@ const request = async (method, endpoint, payload = null, queryParams = {}) => {
   }
 }
 
-export default {
+const requests = {
   get: (endpoint, queryParams = {}) => request('GET', endpoint, null, queryParams),
   post: (endpoint, payload) => request('POST', endpoint, payload),
   patch: (endpoint, payload) => request('PATCH', endpoint, payload),
   delete: (endpoint) => request('DELETE', endpoint),
 }
+
+export default requests
