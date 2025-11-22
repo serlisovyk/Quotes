@@ -1,7 +1,9 @@
 import localFont from 'next/font/local'
+import { Suspense } from 'react'
 import { ToastContainer } from 'react-toastify'
 import Header from '@components/Header'
 import Footer from '@components/Footer'
+import Loader from '@components/Loader'
 import QueryProvider from './query-provider'
 import './globals.css'
 import 'react-toastify/dist/ReactToastify.css'
@@ -27,16 +29,18 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <ToastContainer
-          position="top-right"
-          autoClose={5000}
-          hideProgressBar={false}
-        />
-        <Header />
-        <QueryProvider>
-          <main className="container mx-auto p-4">{children}</main>
-        </QueryProvider>
-        <Footer />
+        <Suspense fallback={<Loader />}>
+          <ToastContainer
+            position="top-right"
+            autoClose={5000}
+            hideProgressBar={false}
+          />
+          <Header />
+          <QueryProvider>
+            <main className="container mx-auto p-4">{children}</main>
+          </QueryProvider>
+          <Footer />
+        </Suspense>
       </body>
     </html>
   )
