@@ -6,8 +6,12 @@ node_modules/
 
 .vercel
 
-client/build
-client/.next
-client/.swc
-client/out
-client/coverage
+build
+
+.next
+
+.swc
+
+out
+
+coverage

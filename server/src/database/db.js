@@ -1,10 +1,14 @@
 import { Sequelize } from 'sequelize'
-import { DB } from '../config/config.js'
+import { DATABASE_URL, DB_DIALECT } from '../config/config.js'
 
-const sequelize = new Sequelize(DB.NAME, DB.USER, DB.PASSWORD, {
-  dialect: DB.DIALECT,
-  host: DB.HOST,
-  port: DB.PORT,
+const sequelize = new Sequelize(DATABASE_URL, {
+  dialect: DB_DIALECT,
+  dialectOptions: {
+    ssl: {
+      require: true,
+      rejectUnauthorized: false,
+    },
+  },
   logging: false,
 })
 

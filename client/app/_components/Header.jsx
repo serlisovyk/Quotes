@@ -6,13 +6,13 @@ import { useState } from 'react'
 import navIcon from '@public/navIcon.png'
 import BurgerButton from '@components/BurgerButton'
 import MenuItems from '@components/MenuItems'
-import ThemeToggle from '@components/ThemeToggle'
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false)
 
-  const toggleMenu = () => setIsOpen((prev) => !prev)
   const closeMenu = () => setIsOpen(false)
+
+  const toggleMenu = () => setIsOpen((prev) => !prev)
 
   return (
     <nav className="bg-white dark:bg-gray-800 p-4 shadow-md">
@@ -55,8 +55,6 @@ export default function Header() {
         <div className="hidden md:flex space-x-8 pl-10 lg:pl-20 text-xl">
           <MenuItems />
         </div>
-
-        <ThemeToggle />
       </div>
     </nav>
   )
