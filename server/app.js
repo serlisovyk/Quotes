@@ -1,4 +1,4 @@
-import app from './src/app.js'
+import app from './src/server.js'
 import dbInit from './src/database/dbInit.js'
 import { APP_PORT } from './src/config/config.js'
 
