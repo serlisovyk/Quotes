@@ -1,7 +1,7 @@
 'use client'
 
 import { useRouter, useSearchParams } from 'next/navigation'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, Suspense } from 'react'
 import deepEqual from 'deep-equal'
 import Button from '@components/Button'
 import Quotes from '@components/Quotes'
@@ -70,49 +70,53 @@ export default function SearchQuotesPage() {
   }
 
   return (
-    <div className="p-4">
-      <h1 className="text-3xl mb-6 text-center dark:text-white">Search Quotes</h1>
+    <Suspense fallback={<Loader />}>
+      <div className="p-4">
+        <h1 className="text-3xl mb-6 text-center dark:text-white">Search Quotes</h1>
 
-      <SearchFields
-        searchValues={searchValues}
-        setSearchValues={setSearchValues}
-        validationErrors={validationErrors}
-        setValidationErrors={setValidationErrors}
-        showError={searchButtonClicked}
-      />
+        <SearchFields
+          searchValues={searchValues}
+          setSearchValues={setSearchValues}
+          validationErrors={validationErrors}
+          setValidationErrors={setValidationErrors}
+          showError={searchButtonClicked}
+        />
 
-      <div className="flex justify-center mb-6">
-        <Button onClick={handleSearch} text="Search" />
-        <Button onClick={clearSearch} text="Clear" variant="secondary" />
-      </div>
+        <div className="flex justify-center mb-6">
+          <Button onClick={handleSearch} text="Search" />
+          <Button onClick={clearSearch} text="Clear" variant="secondary" />
+        </div>
 
-      {error && (
-        <p className="text-center text-gray-600 mb-6">Error while fetching quotes</p>
-      )}
-
-      {isLoading ? (
-        <Loader />
-      ) : quotes.length ? (
-        <>
-          <Quotes
-            quotes={quotes}
-            selectedCategory={searchValues.category}
-            searchText={searchValues.text}
-          />
-
-          <Pagination
-            total={total}
-            queryParams={queryParams}
-            setQueryParams={setQueryParams}
-          />
-        </>
-      ) : (
-        searchSubmitted && (
-          <p className="text-2xl pt-10 text-center text-gray-600 dark:text-gray-400">
-            No quotes found.
+        {error && (
+          <p className="text-center text-gray-600 mb-6">
+            Error while fetching quotes
           </p>
-        )
-      )}
-    </div>
+        )}
+
+        {isLoading ? (
+          <Loader />
+        ) : quotes.length ? (
+          <>
+            <Quotes
+              quotes={quotes}
+              selectedCategory={searchValues.category}
+              searchText={searchValues.text}
+            />
+
+            <Pagination
+              total={total}
+              queryParams={queryParams}
+              setQueryParams={setQueryParams}
+            />
+          </>
+        ) : (
+          searchSubmitted && (
+            <p className="text-2xl pt-10 text-center text-gray-600 dark:text-gray-400">
+              No quotes found.
+            </p>
+          )
+        )}
+      </div>
+    </Suspense>
   )
 }
