@@ -4,7 +4,7 @@ This is a Fullstack project for displaying and managing quotes. It allows users 
 
 ## Demo
 
-Soon...
+https://quotes-xi-five.vercel.app/
 
 ## Tools
 
