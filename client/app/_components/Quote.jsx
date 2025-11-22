@@ -13,9 +13,9 @@ export default function Quote({ quote, selectedCategory, searchText }) {
     <div className="bg-gray-200 dark:bg-gray-800 p-4 shadow-md rounded-lg hover:-translate-y-1.5 hover:bg-gray-100 hover:dark:bg-gray-700 transition-transform duration 400">
       <Link href={`/quotes/${id}`}>
         <p className="mb-4 text-xl italic text-gray-900 dark:text-gray-100">
-          "
+          &quot;
           {renderQuoteText({ fullText: text, visiblePart, searchText, isTruncated })}
-          "
+          &quot;
         </p>
       </Link>
 
